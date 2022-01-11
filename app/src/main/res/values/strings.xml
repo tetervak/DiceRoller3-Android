@@ -25,5 +25,6 @@
     <string name="blank">&#160;</string>
     <string name="the_data_is_saved">The roll data is saved in the history.</string>
     <string name="total_label">Total:</string>
+    <string name="nothing_to_save">There is nothing to save.</string>
 
 </resources>

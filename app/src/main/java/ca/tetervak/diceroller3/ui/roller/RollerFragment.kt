@@ -15,8 +15,6 @@ class RollerFragment : Fragment() {
 
     private var _binding: RollerFragmentBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private val viewModel: RollerViewModel by viewModels()
@@ -94,11 +92,18 @@ class RollerFragment : Fragment() {
     }
 
     private fun save() {
-        viewModel.save()
-        Snackbar.make(
-            binding.root,
-            getString(R.string.the_data_is_saved),
-            Snackbar.LENGTH_SHORT
-        ).show()
+        if(viewModel.save()){
+            Snackbar.make(
+                binding.root,
+                getString(R.string.the_data_is_saved),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }else{
+            Snackbar.make(
+                binding.root,
+                getString(R.string.nothing_to_save),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 }

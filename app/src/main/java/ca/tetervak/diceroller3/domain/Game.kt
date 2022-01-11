@@ -6,7 +6,7 @@ class Game {
         const val NUM_OF_DICE: Int = 3
     }
 
-    val dice = List(NUM_OF_DICE) { Die() }
+    val dice: List<Die> = List(NUM_OF_DICE) { Die() }
 
     var isRolled: Boolean = false
     private set
