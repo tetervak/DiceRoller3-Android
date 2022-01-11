@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import ca.tetervak.diceroller3.databinding.ActivityMainBinding
+import ca.tetervak.diceroller3.ui.dialogs.showInfoDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +47,13 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_about -> {
+                showInfoDialog(
+                    title = getString(R.string.app_name),
+                    message = getString(R.string.author)
+                )
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

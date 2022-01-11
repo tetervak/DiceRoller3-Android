@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Dice Roller 3</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="roller_fragment_label">Roll Dice</string>
@@ -11,4 +12,7 @@
 
     <string name="hello_roller_fragment">Hello Roller Fragment</string>
     <string name="hello_history_fragment">Hello History fragment. Arg: %1$s</string>
+
+    <!-- about dialog -->
+    <string name="author">Alex Tetervak, Sheridan College, 2022</string>
 </resources>
