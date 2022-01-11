@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.binding.bindDieValue
+import ca.tetervak.diceroller3.binding.bindGameTotal
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -61,6 +62,7 @@ class RollerFragment : Fragment() {
         bindDieValue(binding.die1TextView, viewModel.game.dice[0])
         bindDieValue(binding.die2TextView, viewModel.game.dice[1])
         bindDieValue(binding.die3TextView, viewModel.game.dice[2])
+        bindGameTotal(binding.totalValueTextView, viewModel.game)
     }
 
     private fun showHistory() {

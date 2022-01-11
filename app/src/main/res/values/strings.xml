@@ -24,5 +24,6 @@
     <string name="action_history">History</string>
     <string name="blank">&#160;</string>
     <string name="the_data_is_saved">The roll data is saved in the history.</string>
+    <string name="total_label">Total:</string>
 
 </resources>

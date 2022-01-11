@@ -26,11 +26,13 @@ class Game {
         for (die in dice) {
             die.roll()
         }
+        isRolled = true
     }
 
     fun reset() {
         for (die in dice) {
             die.reset()
         }
+        isRolled = false
     }
 }
