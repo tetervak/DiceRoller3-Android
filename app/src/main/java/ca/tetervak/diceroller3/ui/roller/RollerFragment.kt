@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
+import ca.tetervak.diceroller3.binding.bindDieValue
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
+import com.google.android.material.snackbar.Snackbar
 
 class RollerFragment : Fragment() {
 
@@ -34,9 +36,31 @@ class RollerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        refresh() // display the data from the game
+
+        binding.rollButton.setOnClickListener {
+            viewModel.roll()
+            refresh()
+        }
+
+        binding.resetButton.setOnClickListener {
+            viewModel.reset()
+            refresh()
+        }
+
+        binding.saveButton.setOnClickListener {
+            save()
+        }
+
         binding.historyButton.setOnClickListener {
             showHistory()
         }
+    }
+
+    private fun refresh() {
+        bindDieValue(binding.die1TextView, viewModel.game.dice[0])
+        bindDieValue(binding.die2TextView, viewModel.game.dice[1])
+        bindDieValue(binding.die3TextView, viewModel.game.dice[2])
     }
 
     private fun showHistory() {
@@ -56,7 +80,7 @@ class RollerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save -> {
-                viewModel.save()
+                save()
                 true
             }
             R.id.action_history -> {
@@ -65,5 +89,14 @@ class RollerFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun save() {
+        viewModel.save()
+        Snackbar.make(
+            binding.root,
+            getString(R.string.the_data_is_saved),
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 }

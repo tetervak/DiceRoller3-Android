@@ -5,7 +5,7 @@ import ca.tetervak.diceroller3.domain.Game
 
 class RollerViewModel: ViewModel() {
 
-    private val game: Game = Game()
+    val game: Game = Game()
 
     fun roll(){
         game.roll()
