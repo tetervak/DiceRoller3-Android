@@ -15,4 +15,9 @@
 
     <!-- about dialog -->
     <string name="author">Alex Tetervak, Sheridan College, 2022</string>
+    <string name="save_button_label">Save</string>
+    <string name="roll_the_dice">Roll The Dice</string>
+    <string name="reset_button_label">Reset</string>
+    <string name="action_save">Save</string>
+    <string name="action_history">History</string>
 </resources>
