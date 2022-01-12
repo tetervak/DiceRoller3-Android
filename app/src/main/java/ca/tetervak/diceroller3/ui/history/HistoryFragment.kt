@@ -32,13 +32,9 @@ class HistoryFragment : Fragment() {
         val adapter = HistoryListAdapter()
         binding.recyclerView.adapter = adapter
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         refresh()
+
+        return binding.root
     }
 
     private fun refresh() {
