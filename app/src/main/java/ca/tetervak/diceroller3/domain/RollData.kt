@@ -2,6 +2,7 @@ package ca.tetervak.diceroller3.domain
 
 import java.util.*
 
+// The data from one roll
 data class RollData(
     var id: Int?,
     val values: List<Int>,

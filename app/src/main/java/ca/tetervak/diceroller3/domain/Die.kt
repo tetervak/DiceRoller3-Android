@@ -3,6 +3,7 @@ package ca.tetervak.diceroller3.domain
 import android.util.Log
 import java.lang.IllegalArgumentException
 
+// One die object between 1 and 6
 class Die() {
 
     companion object{

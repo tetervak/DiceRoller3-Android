@@ -1,5 +1,6 @@
 package ca.tetervak.diceroller3.domain
 
+// Rolls 3 dice objects and calculates the total of the roll
 class Game {
 
     companion object {
