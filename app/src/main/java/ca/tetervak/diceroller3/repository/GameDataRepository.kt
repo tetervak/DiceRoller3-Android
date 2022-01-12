@@ -7,8 +7,8 @@ class GameDataRepository private constructor() {
     private val items = ArrayList<HistoryItem>()
 
     fun save(item: HistoryItem){
-        item.id = items.size
         items.add(item)
+        item.id = items.size
     }
 
     // it gives a copy of the stored list
