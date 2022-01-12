@@ -11,7 +11,8 @@ class GameDataRepository private constructor() {
         items.add(item)
     }
 
-    fun getHistory() = items
+    // it gives a copy of the stored list
+    fun getHistory() = items.toList()
 
     fun clearAll(){
         items.clear()

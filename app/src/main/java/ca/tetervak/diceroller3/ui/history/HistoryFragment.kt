@@ -1,10 +1,8 @@
 package ca.tetervak.diceroller3.ui.history
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
@@ -24,6 +22,8 @@ class HistoryFragment : Fragment() {
     ): View {
 
         _binding = HistoryFragmentBinding.inflate(inflater, container, false)
+
+        setHasOptionsMenu(true)
 
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
@@ -51,4 +51,25 @@ class HistoryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_history, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_clear -> {
+                clear()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun clear() {
+        viewModel.clear()
+        refresh()
+    }
+
 }

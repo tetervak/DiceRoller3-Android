@@ -7,16 +7,12 @@
     <string name="roller_fragment_label">Roll Dice</string>
     <string name="history_fragment_label">Saved History</string>
 
-    <string name="history_button_label">History</string>
-    <string name="roll_button_label">Roll Dice</string>
-
-
-    <string name="hello_history_fragment">Hello History fragment. Arg: %1$s</string>
-
     <!-- about dialog -->
     <string name="author">Alex Tetervak, Sheridan College, 2022</string>
 
     <!-- roller fragment -->
+    <string name="history_button_label">History</string>
+    <string name="roll_button_label">Roll Dice</string>
     <string name="save_button_label">Save</string>
     <string name="roll_the_dice">Roll The Dice</string>
     <string name="reset_button_label">Reset</string>
@@ -35,5 +31,6 @@
     </plurals>
     <string name="count_value">%1$d.</string>
     <string name="result_values">%1$d + %2$d + %3$d = %4$d</string>
+    <string name="action_clear">Clear</string>
 
 </resources>

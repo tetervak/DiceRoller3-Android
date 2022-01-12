@@ -8,4 +8,8 @@ class HistoryViewModel: ViewModel() {
     private val repository = GameDataRepository.getRepository()
 
     fun getHistory() = repository.getHistory()
+
+    fun clear(){
+        repository.clearAll()
+    }
 }
