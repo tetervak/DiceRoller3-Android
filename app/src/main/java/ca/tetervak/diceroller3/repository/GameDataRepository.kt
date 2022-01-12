@@ -1,31 +1,48 @@
 package ca.tetervak.diceroller3.repository
 
-import ca.tetervak.diceroller3.domain.HistoryItem
+import ca.tetervak.diceroller3.domain.HistoryData
+import ca.tetervak.diceroller3.domain.RollData
 
 class GameDataRepository private constructor() {
 
     private var autoId = 0;
-    private val items = HashMap<Int, HistoryItem>()
+    private val itemsMap = HashMap<Int, RollData>()
 
-    @Synchronized
-    fun save(item: HistoryItem){
-        item.id = ++autoId;
-        items[autoId] = item
+    private val itemsList: List<RollData>
+        get() {
+            var list: List<RollData>
+            synchronized(itemsMap) {
+                list = itemsMap.values.toList()
+            }
+            return list.sortedBy { item -> item.id }
+        }
+
+    fun saveRoll(item: RollData) {
+        synchronized(itemsMap) {
+            item.id = ++autoId;
+            itemsMap[autoId] = item
+        }
     }
 
-    // it gives a copy of the stored list
-    @Synchronized
-    fun getHistory(): List<HistoryItem>
-        = items.values.toList().sortedBy { item -> item.id }
-
-    @Synchronized
-    fun delete(id: Int){
-        items.remove(id)
+    fun getHistoryData(): HistoryData {
+        val list = itemsList
+        var sum = 0;
+        for (item in list) {
+            sum += item.total
+        }
+        return HistoryData(total = sum, rolls = list)
     }
 
-    @Synchronized
-    fun clearAll(){
-        items.clear()
+    fun deleteRoll(id: Int) {
+        synchronized(itemsMap) {
+            itemsMap.remove(id)
+        }
+    }
+
+    fun clearAllRolls() {
+        synchronized(itemsMap) {
+            itemsMap.clear()
+        }
     }
 
     companion object {
@@ -41,5 +58,4 @@ class GameDataRepository private constructor() {
             }
         }
     }
-
 }

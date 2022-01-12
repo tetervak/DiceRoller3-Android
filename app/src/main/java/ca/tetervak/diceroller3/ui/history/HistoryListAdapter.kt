@@ -5,22 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.binding.bindDateTime
 import ca.tetervak.diceroller3.binding.bindItemCountValue
 import ca.tetervak.diceroller3.binding.bindResultValues
 import ca.tetervak.diceroller3.databinding.HistoryListItemBinding
-import ca.tetervak.diceroller3.domain.HistoryItem
+import ca.tetervak.diceroller3.domain.RollData
 
 class HistoryListAdapter(
-    private var onDelete: (HistoryItem) -> Unit
-): ListAdapter<HistoryItem, HistoryListAdapter.ViewHolder>(HistoryItemDiffCallback())  {
+    private var onDelete: (RollData) -> Unit
+): ListAdapter<RollData, HistoryListAdapter.ViewHolder>(HistoryItemDiffCallback())  {
 
     inner class ViewHolder(
         private val binding: HistoryListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(count: Int, item: HistoryItem) {
+        fun bind(count: Int, item: RollData) {
 
             bindItemCountValue(binding.itemCountValue, count)
             bindResultValues(binding.resultValues, item)
@@ -32,12 +31,12 @@ class HistoryListAdapter(
         }
     }
 
-    class HistoryItemDiffCallback : DiffUtil.ItemCallback<HistoryItem>() {
-        override fun areItemsTheSame(oldItem: HistoryItem, newItem: HistoryItem): Boolean {
+    class HistoryItemDiffCallback : DiffUtil.ItemCallback<RollData>() {
+        override fun areItemsTheSame(oldItem: RollData, newItem: RollData): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: HistoryItem, newItem: HistoryItem): Boolean {
+        override fun areContentsTheSame(oldItem: RollData, newItem: RollData): Boolean {
             return oldItem == newItem
         }
     }

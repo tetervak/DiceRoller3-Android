@@ -7,13 +7,13 @@ class HistoryViewModel: ViewModel() {
 
     private val repository = GameDataRepository.getRepository()
 
-    fun getHistory() = repository.getHistory()
+    fun getHistoryData() = repository.getHistoryData()
 
-    fun delete(id: Int){
-        repository.delete(id)
+    fun deleteRoll(id: Int){
+        repository.deleteRoll(id)
     }
 
-    fun clear(){
-        repository.clearAll()
+    fun clearAllRolls(){
+        repository.clearAllRolls()
     }
 }

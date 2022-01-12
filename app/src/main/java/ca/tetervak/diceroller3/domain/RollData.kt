@@ -2,10 +2,10 @@ package ca.tetervak.diceroller3.domain
 
 import java.util.*
 
-data class HistoryItem(
+data class RollData(
     var id: Int?,
-    val dieValues: List<Int>,
-    val totalValue: Int,
+    val values: List<Int>,
+    val total: Int,
     val date: Date
 ){
     constructor(game: Game):
