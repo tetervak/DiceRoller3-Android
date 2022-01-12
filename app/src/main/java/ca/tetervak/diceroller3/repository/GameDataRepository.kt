@@ -4,16 +4,25 @@ import ca.tetervak.diceroller3.domain.HistoryItem
 
 class GameDataRepository private constructor() {
 
-    private val items = ArrayList<HistoryItem>()
+    private var autoId = 0;
+    private val items = HashMap<Int, HistoryItem>()
 
+    @Synchronized
     fun save(item: HistoryItem){
-        items.add(item)
-        item.id = items.size
+        item.id = ++autoId;
+        items[autoId] = item
     }
 
     // it gives a copy of the stored list
-    fun getHistory() = items.toList()
+    @Synchronized
+    fun getHistory() = items.values.toList().sortedBy { item -> item.id }
 
+    @Synchronized
+    fun delete(id: Int){
+        items.remove(id)
+    }
+
+    @Synchronized
     fun clearAll(){
         items.clear()
     }
