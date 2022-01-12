@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.binding.bindHistoryCountValue
+import ca.tetervak.diceroller3.binding.bindHistoryListValues
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
 
 class HistoryFragment : Fragment() {
@@ -42,9 +43,8 @@ class HistoryFragment : Fragment() {
 
     private fun refresh() {
         val history = viewModel.getHistory()
-        val adapter = binding.recyclerView.adapter as HistoryListAdapter
-        adapter.submitList(history)
         bindHistoryCountValue(binding.historyCount, history)
+        bindHistoryListValues(binding.recyclerView, history)
     }
 
     override fun onDestroyView() {
