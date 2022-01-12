@@ -25,12 +25,7 @@ class GameDataSource {
     }
 
     fun getHistoryData(): HistoryData {
-        val list = itemsList
-        var sum = 0;
-        for (item in list) {
-            sum += item.total
-        }
-        return HistoryData(total = sum, rolls = list)
+        return HistoryData(itemsList)
     }
 
     fun deleteRoll(id: Int) {
