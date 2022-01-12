@@ -1,4 +1,4 @@
-package ca.tetervak.diceroller3.repository
+package ca.tetervak.diceroller3.data
 
 import ca.tetervak.diceroller3.domain.HistoryData
 import ca.tetervak.diceroller3.domain.RollData
