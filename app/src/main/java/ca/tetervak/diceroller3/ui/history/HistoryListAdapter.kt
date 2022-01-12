@@ -7,29 +7,28 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.binding.bindDateTime
+import ca.tetervak.diceroller3.binding.bindItemCountValue
+import ca.tetervak.diceroller3.binding.bindResultValues
 import ca.tetervak.diceroller3.databinding.HistoryListItemBinding
 import ca.tetervak.diceroller3.domain.HistoryItem
 
 class HistoryListAdapter(
+    private var onDelete: (HistoryItem) -> Unit
 ): ListAdapter<HistoryItem, HistoryListAdapter.ViewHolder>(HistoryItemDiffCallback())  {
 
-    class ViewHolder(
+    inner class ViewHolder(
         private val binding: HistoryListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(count: Int, item: HistoryItem) {
-            val resources = binding.root.resources
-            binding.countValue.text =
-                resources.getString(R.string.count_value, count)
-            binding.resultValues.text =
-                resources.getString(
-                    R.string.result_values,
-                    item.dieValues[0],
-                    item.dieValues[1],
-                    item.dieValues[2],
-                    item.totalValue
-                )
+
+            bindItemCountValue(binding.itemCountValue, count)
+            bindResultValues(binding.resultValues, item)
             bindDateTime(binding.timeStampValue, item.date)
+
+            binding.deleteButton.setOnClickListener {
+                onDelete(item)
+            }
         }
     }
 

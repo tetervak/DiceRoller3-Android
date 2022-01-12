@@ -9,6 +9,7 @@ import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.binding.bindHistoryCountValue
 import ca.tetervak.diceroller3.binding.bindHistoryListValues
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
+import ca.tetervak.diceroller3.domain.HistoryItem
 
 class HistoryFragment : Fragment() {
 
@@ -29,12 +30,19 @@ class HistoryFragment : Fragment() {
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
 
-        val adapter = HistoryListAdapter()
+        val adapter = HistoryListAdapter { item ->
+            delete(item)
+        }
         binding.recyclerView.adapter = adapter
 
         refresh()
 
         return binding.root
+    }
+
+    private fun delete(item: HistoryItem) {
+        viewModel.delete(item.id!!)
+        refresh()
     }
 
     private fun refresh() {

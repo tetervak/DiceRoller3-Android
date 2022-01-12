@@ -9,6 +9,10 @@ class HistoryViewModel: ViewModel() {
 
     fun getHistory() = repository.getHistory()
 
+    fun delete(id: Int){
+        repository.delete(id)
+    }
+
     fun clear(){
         repository.clearAll()
     }

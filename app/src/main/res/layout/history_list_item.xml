@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/count_value"
+        android:id="@+id/item_count_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/deep_purple_500"
-        app:layout_constraintStart_toEndOf="@+id/count_value"
+        app:layout_constraintStart_toEndOf="@+id/item_count_value"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1 + 2 + 3 = 6" />
 
@@ -42,5 +42,17 @@
         app:layout_constraintStart_toStartOf="@+id/result_values"
         app:layout_constraintTop_toBottomOf="@+id/result_values"
         tools:text="Tue, Jan 11, 2022 - 7:45 pm" />
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/delete_history_item"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

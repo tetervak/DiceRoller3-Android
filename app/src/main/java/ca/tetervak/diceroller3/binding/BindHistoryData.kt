@@ -18,3 +18,20 @@ fun bindHistoryListValues(recyclerView: RecyclerView, list: List<HistoryItem>?) 
         adapter.submitList(it)
     }
 }
+
+fun bindItemCountValue(textView: TextView, count: Int?) {
+    if (count is Int) {
+        textView.text =
+            textView.resources.getString(R.string.count_value, count)
+    }
+}
+
+fun bindResultValues(textView: TextView, item: HistoryItem?) {
+    item?.let {
+        val values = item.dieValues
+        textView.text =
+            textView.resources.getString(
+                R.string.result_values, values[0], values[1], values[2], item.totalValue
+            )
+    }
+}

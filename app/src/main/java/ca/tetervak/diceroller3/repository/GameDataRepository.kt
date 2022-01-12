@@ -15,7 +15,8 @@ class GameDataRepository private constructor() {
 
     // it gives a copy of the stored list
     @Synchronized
-    fun getHistory() = items.values.toList().sortedBy { item -> item.id }
+    fun getHistory(): List<HistoryItem>
+        = items.values.toList().sortedBy { item -> item.id }
 
     @Synchronized
     fun delete(id: Int){
