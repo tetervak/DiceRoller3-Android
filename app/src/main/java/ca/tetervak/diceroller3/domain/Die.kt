@@ -12,7 +12,6 @@ class Die() {
     var isRolled: Boolean = false
     private set
 
-    // zero means not rolled yet
     var value: Int = INIT_DIE_VALUE
         set(n) {
             if (n in 1..6) {
@@ -23,7 +22,8 @@ class Die() {
             }
         }
 
-    constructor(n: Int) : this() {
+    constructor(n: Int, isRolled: Boolean) : this() {
+        this.isRolled = isRolled
         value = n
     }
 
