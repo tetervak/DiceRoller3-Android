@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/activity_main.xml" value="0.11481481481481481" />
-        <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/history_fragment.xml" value="0.13240740740740742" />
+        <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/history_fragment.xml" value="0.2703125" />
+        <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/history_item.xml" value="0.1" />
+        <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/history_list_item.xml" value="0.22" />
         <entry key="..\:/Android/DiceRoller3/app/src/main/res/layout/roller_fragment.xml" value="0.33" />
         <entry key="..\:/Android/DiceRoller3/app/src/main/res/menu/menu_main.xml" value="0.146875" />
         <entry key="..\:/Android/DiceRoller3/app/src/main/res/menu/menu_roller.xml" value="0.26385358413828164" />

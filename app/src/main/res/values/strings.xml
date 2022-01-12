@@ -26,5 +26,14 @@
     <string name="the_data_is_saved">The roll data is saved in the history.</string>
     <string name="total_label">Total:</string>
     <string name="nothing_to_save">There is nothing to save.</string>
+    <string name="delete_history_item">Delete History Item</string>
+
+    <!-- history fragment -->
+    <plurals name="history_count">
+        <item quantity="one">History Count: %1$d item</item>
+        <item quantity="other">History Count: %1$d items</item>
+    </plurals>
+    <string name="count_value">%1$d.</string>
+    <string name="result_values">%1$d + %2$d + %3$d = %4$d</string>
 
 </resources>

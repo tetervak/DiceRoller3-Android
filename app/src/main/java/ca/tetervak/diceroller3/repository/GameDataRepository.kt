@@ -7,16 +7,15 @@ class GameDataRepository private constructor() {
     private val items = ArrayList<HistoryItem>()
 
     fun save(item: HistoryItem){
+        item.id = items.size
         items.add(item)
     }
 
-    fun delete(id: Int){
-        items.removeAt(id)
-    }
-
-    fun getCount() = items.size
-
     fun getHistory() = items
+
+    fun clearAll(){
+        items.clear()
+    }
 
     companion object {
 

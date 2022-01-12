@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
+import ca.tetervak.diceroller3.binding.bindHistoryCountValue
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
 
 class HistoryFragment : Fragment() {
@@ -23,13 +24,27 @@ class HistoryFragment : Fragment() {
     ): View {
 
         _binding = HistoryFragmentBinding.inflate(inflater, container, false)
+
+        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider)
+
+        val adapter = HistoryListAdapter()
+        binding.recyclerView.adapter = adapter
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        refresh()
+    }
 
+    private fun refresh() {
+        val history = viewModel.getHistory()
+        val adapter = binding.recyclerView.adapter as HistoryListAdapter
+        adapter.submitList(history)
+        bindHistoryCountValue(binding.historyCount, history)
     }
 
     override fun onDestroyView() {
