@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
+import ca.tetervak.diceroller3.binding.bindDieImage
 import ca.tetervak.diceroller3.binding.bindDieValue
 import ca.tetervak.diceroller3.binding.bindGameTotal
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
@@ -56,6 +57,11 @@ class RollerFragment : Fragment() {
         bindDieValue(binding.die1TextView, viewModel.game.dice[0])
         bindDieValue(binding.die2TextView, viewModel.game.dice[1])
         bindDieValue(binding.die3TextView, viewModel.game.dice[2])
+
+        bindDieImage(binding.die1ImageView, viewModel.game.dice[0])
+        bindDieImage(binding.die2ImageView, viewModel.game.dice[1])
+        bindDieImage(binding.die3ImageView, viewModel.game.dice[2])
+
         bindGameTotal(binding.totalValueTextView, viewModel.game)
     }
 

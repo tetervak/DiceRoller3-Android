@@ -1,5 +1,6 @@
 package ca.tetervak.diceroller3.binding
 
+import android.widget.ImageView
 import android.widget.TextView
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.Die
@@ -11,6 +12,23 @@ fun bindDieValue(textView: TextView, die: Die?) {
             die.value.toString()
         } else {
             textView.resources.getString(R.string.blank)
+        }
+    }
+}
+
+fun bindDieImage(imageView: ImageView, die: Die?){
+    if(die is Die){
+        if(die.isRolled) {
+            when (die.value) {
+                1 -> imageView.setImageResource(R.drawable.dice_1)
+                2 -> imageView.setImageResource(R.drawable.dice_2)
+                3 -> imageView.setImageResource(R.drawable.dice_3)
+                4 -> imageView.setImageResource(R.drawable.dice_4)
+                5 -> imageView.setImageResource(R.drawable.dice_5)
+                6 -> imageView.setImageResource(R.drawable.dice_6)
+            }
+        }else{
+            imageView.setImageResource(android.R.color.transparent)
         }
     }
 }
