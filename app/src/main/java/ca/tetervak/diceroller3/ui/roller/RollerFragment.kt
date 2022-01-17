@@ -32,16 +32,16 @@ class RollerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        refresh() // display the data from the game
+        viewModel.game.observe(viewLifecycleOwner){
+            refresh()
+        }
 
         binding.rollButton.setOnClickListener {
             viewModel.roll()
-            refresh()
         }
 
         binding.resetButton.setOnClickListener {
             viewModel.reset()
-            refresh()
         }
 
         binding.saveButton.setOnClickListener {
