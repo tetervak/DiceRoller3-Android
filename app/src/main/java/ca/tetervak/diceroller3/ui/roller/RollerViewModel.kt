@@ -9,19 +9,19 @@ class RollerViewModel : ViewModel() {
 
     private val repository = GameDataRepository.getRepository()
 
-    val game: Game = Game()
+    val gameValue: Game = Game()
 
     fun roll() {
-        game.roll()
+        gameValue.roll()
     }
 
     fun reset() {
-        game.reset()
+        gameValue.reset()
     }
 
     fun save(): Boolean {
-        return if (game.isRolled) {
-            repository.saveRoll(game.asRollData())
+        return if (gameValue.isRolled) {
+            repository.saveRoll(gameValue.asRollData())
             true
         } else {
             false

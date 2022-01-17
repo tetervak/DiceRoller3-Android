@@ -54,15 +54,15 @@ class RollerFragment : Fragment() {
     }
 
     private fun refresh() {
-        bindDieValue(binding.die1TextView, viewModel.game.dice[0])
-        bindDieValue(binding.die2TextView, viewModel.game.dice[1])
-        bindDieValue(binding.die3TextView, viewModel.game.dice[2])
+        bindDieValue(binding.die1TextView, viewModel.gameValue.dice[0])
+        bindDieValue(binding.die2TextView, viewModel.gameValue.dice[1])
+        bindDieValue(binding.die3TextView, viewModel.gameValue.dice[2])
 
-        bindDieImage(binding.die1ImageView, viewModel.game.dice[0])
-        bindDieImage(binding.die2ImageView, viewModel.game.dice[1])
-        bindDieImage(binding.die3ImageView, viewModel.game.dice[2])
+        bindDieImage(binding.die1ImageView, viewModel.gameValue.dice[0])
+        bindDieImage(binding.die2ImageView, viewModel.gameValue.dice[1])
+        bindDieImage(binding.die3ImageView, viewModel.gameValue.dice[2])
 
-        bindGameTotal(binding.totalValueTextView, viewModel.game)
+        bindGameTotal(binding.totalValueTextView, viewModel.gameValue)
     }
 
     private fun showHistory() {
