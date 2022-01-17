@@ -11,7 +11,7 @@ class RollerViewModel : ViewModel() {
 
     private val repository = GameDataRepository.getRepository()
 
-    val gameValue: Game = Game()
+    private val gameValue: Game = Game()
     private val _game: MutableLiveData<Game> = MutableLiveData(gameValue)
     val game: LiveData<Game> = _game
 

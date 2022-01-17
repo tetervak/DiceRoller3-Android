@@ -10,6 +10,7 @@ import ca.tetervak.diceroller3.binding.bindDieImage
 import ca.tetervak.diceroller3.binding.bindDieValue
 import ca.tetervak.diceroller3.binding.bindGameTotal
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
+import ca.tetervak.diceroller3.domain.Game
 import com.google.android.material.snackbar.Snackbar
 
 class RollerFragment : Fragment() {
@@ -32,8 +33,8 @@ class RollerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.game.observe(viewLifecycleOwner){
-            refresh()
+        viewModel.game.observe(viewLifecycleOwner){ gameValue ->
+            refresh(gameValue)
         }
 
         binding.rollButton.setOnClickListener {
@@ -53,16 +54,16 @@ class RollerFragment : Fragment() {
         }
     }
 
-    private fun refresh() {
-        bindDieValue(binding.die1TextView, viewModel.gameValue.dice[0])
-        bindDieValue(binding.die2TextView, viewModel.gameValue.dice[1])
-        bindDieValue(binding.die3TextView, viewModel.gameValue.dice[2])
+    private fun refresh(gameValue: Game) {
+        bindDieValue(binding.die1TextView, gameValue.dice[0])
+        bindDieValue(binding.die2TextView, gameValue.dice[1])
+        bindDieValue(binding.die3TextView, gameValue.dice[2])
 
-        bindDieImage(binding.die1ImageView, viewModel.gameValue.dice[0])
-        bindDieImage(binding.die2ImageView, viewModel.gameValue.dice[1])
-        bindDieImage(binding.die3ImageView, viewModel.gameValue.dice[2])
+        bindDieImage(binding.die1ImageView, gameValue.dice[0])
+        bindDieImage(binding.die2ImageView, gameValue.dice[1])
+        bindDieImage(binding.die3ImageView, gameValue.dice[2])
 
-        bindGameTotal(binding.totalValueTextView, viewModel.gameValue)
+        bindGameTotal(binding.totalValueTextView, gameValue)
     }
 
     private fun showHistory() {
