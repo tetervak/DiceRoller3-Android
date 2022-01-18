@@ -19,7 +19,7 @@ class GameDataSource {
 
     fun saveRoll(item: RollData) {
         synchronized(itemsMap) {
-            item.id = ++autoId;
+            item.id = ++autoId
             itemsMap[autoId] = item
         }
     }
