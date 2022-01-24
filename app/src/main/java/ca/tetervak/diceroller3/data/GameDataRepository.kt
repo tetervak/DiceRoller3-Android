@@ -9,7 +9,8 @@ class GameDataRepository private constructor() {
 
     private val dataSource = GameDataSource()
 
-    private var isObserved = false;
+    private var isObserved = false
+
     inner class HistoryMutableLiveData(
         historyData: HistoryData
     ): MutableLiveData<HistoryData>(historyData){

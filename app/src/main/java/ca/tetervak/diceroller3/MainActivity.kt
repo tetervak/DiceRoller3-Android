@@ -1,14 +1,13 @@
 package ca.tetervak.diceroller3
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import ca.tetervak.diceroller3.databinding.ActivityMainBinding
 import ca.tetervak.diceroller3.ui.dialogs.showInfoDialog
 
