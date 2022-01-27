@@ -28,6 +28,7 @@ fun bindHistoryListValues(recyclerView: RecyclerView, list: List<RollData>?) {
     }
 }
 
+@BindingAdapter("itemCountValue")
 fun bindItemCountValue(textView: TextView, count: Int?) {
     if (count is Int) {
         textView.text =

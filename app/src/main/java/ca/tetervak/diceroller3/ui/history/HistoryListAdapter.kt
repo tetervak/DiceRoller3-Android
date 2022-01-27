@@ -21,8 +21,9 @@ class HistoryListAdapter(
 
         fun bind(count: Int, item: RollData) {
             binding.item = item
+            binding.count = count
 
-            bindItemCountValue(binding.itemCountValue, count)
+            //bindItemCountValue(binding.itemCountValue, count)
             //bindResultValues(binding.resultValues, item)
             bindDateTime(binding.timeStampValue, item.date)
 
