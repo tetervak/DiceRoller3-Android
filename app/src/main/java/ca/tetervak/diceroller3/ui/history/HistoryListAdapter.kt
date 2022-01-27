@@ -25,7 +25,7 @@ class HistoryListAdapter(
 
             //bindItemCountValue(binding.itemCountValue, count)
             //bindResultValues(binding.resultValues, item)
-            bindDateTime(binding.timeStampValue, item.date)
+            //bindDateTime(binding.timeStampValue, item.date)
 
             binding.deleteButton.setOnClickListener {
                 onDelete(item)
