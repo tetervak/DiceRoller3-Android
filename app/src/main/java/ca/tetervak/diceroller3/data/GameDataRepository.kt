@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ca.tetervak.diceroller3.domain.HistoryData
 import ca.tetervak.diceroller3.domain.RollData
+import kotlinx.coroutines.delay
 
 class GameDataRepository private constructor() {
 
@@ -31,10 +32,11 @@ class GameDataRepository private constructor() {
         HistoryMutableLiveData(dataSource.getHistoryData())
 
     private fun refresh(){
-        historyData.value = getHistoryData()
+        historyData.postValue(getHistoryData())
     }
 
-    fun saveRoll(rollData: RollData) {
+    suspend fun saveRoll(rollData: RollData) {
+        delay(100) // fake delay
         dataSource.saveRoll(rollData)
         if(isObserved){
             refresh()
@@ -47,14 +49,16 @@ class GameDataRepository private constructor() {
 
     fun observeHistoryData(): LiveData<HistoryData> = historyData
 
-    fun deleteRoll(id: Int) {
+    suspend fun deleteRoll(id: Int) {
+        delay(100) // fake delay
         dataSource.deleteRoll(id)
         if(isObserved){
             refresh()
         }
     }
 
-    fun clearAllRolls() {
+    suspend fun clearAllRolls() {
+        delay(100) // fake delay
         dataSource.clearAllRolls()
         if(isObserved){
             refresh()

@@ -3,9 +3,12 @@ package ca.tetervak.diceroller3.ui.roller
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.domain.Game
 import ca.tetervak.diceroller3.domain.asRollData
 import ca.tetervak.diceroller3.data.GameDataRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RollerViewModel : ViewModel() {
 
@@ -25,10 +28,13 @@ class RollerViewModel : ViewModel() {
         _game.value = gameValue
     }
 
+    // this method has a bug
     fun save(): Boolean {
         return if (gameValue.isRolled) {
-            repository.saveRoll(gameValue.asRollData())
-            true
+            viewModelScope.launch(Dispatchers.IO) {
+                repository.saveRoll(gameValue.asRollData())
+            }
+            true // <- this is a bug
         } else {
             false
         }
