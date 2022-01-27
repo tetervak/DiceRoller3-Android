@@ -1,11 +1,13 @@
 package ca.tetervak.diceroller3.binding
 
 import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.RollData
 import ca.tetervak.diceroller3.ui.history.HistoryListAdapter
 
+@BindingAdapter("historyCountValue")
 fun bindHistoryCountValue(textView: TextView, count: Int?) {
     if(count is Int){
         textView.text =
