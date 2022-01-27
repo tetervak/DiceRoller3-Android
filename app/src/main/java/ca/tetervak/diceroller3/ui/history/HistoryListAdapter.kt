@@ -20,9 +20,10 @@ class HistoryListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(count: Int, item: RollData) {
+            binding.item = item
 
             bindItemCountValue(binding.itemCountValue, count)
-            bindResultValues(binding.resultValues, item)
+            //bindResultValues(binding.resultValues, item)
             bindDateTime(binding.timeStampValue, item.date)
 
             binding.deleteButton.setOnClickListener {

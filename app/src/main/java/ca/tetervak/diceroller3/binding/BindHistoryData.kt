@@ -1,6 +1,7 @@
 package ca.tetervak.diceroller3.binding
 
 import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.RollData
@@ -34,6 +35,7 @@ fun bindItemCountValue(textView: TextView, count: Int?) {
     }
 }
 
+@BindingAdapter("resultValues")
 fun bindResultValues(textView: TextView, item: RollData?) {
     item?.let {
         val values = item.values
