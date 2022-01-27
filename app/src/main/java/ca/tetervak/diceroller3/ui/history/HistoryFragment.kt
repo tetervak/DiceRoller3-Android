@@ -52,7 +52,7 @@ class HistoryFragment : Fragment() {
         binding.history = history
         //bindHistoryCountValue(binding.historyCount, history.count)
         bindHistoryListValues(binding.recyclerView, history.rolls)
-        bindHistoryTotalValue(binding.historyTotal, history.total)
+        //bindHistoryTotalValue(binding.historyTotal, history.total)
     }
 
     override fun onDestroyView() {

@@ -55,6 +55,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            historyTotalValue="@{history.total}"
             tools:text="History Total: 10 points" />
 
     </LinearLayout>

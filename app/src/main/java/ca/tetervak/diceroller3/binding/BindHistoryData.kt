@@ -15,6 +15,7 @@ fun bindHistoryCountValue(textView: TextView, count: Int?) {
     }
 }
 
+@BindingAdapter("historyTotalValue")
 fun bindHistoryTotalValue(textView: TextView, total: Int?) {
     if(total is Int){
         textView.text =
