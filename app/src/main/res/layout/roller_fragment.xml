@@ -1,142 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+        <import type="ca.tetervak.diceroller3.domain.Game"/>
+        <variable
+            name="game"
+            type="Game" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/roll_dice_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/double_margin"
-            android:text="@string/roll_the_dice"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/pink_500" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/double_margin"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/die1_image_view"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                app:srcCompat="@drawable/dice_1"
-                android:contentDescription="@string/die_image" />
-
-            <ImageView
-                android:id="@+id/die2_image_view"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                app:srcCompat="@drawable/dice_2"
-                android:contentDescription="@string/die_image" />
-
-            <ImageView
-                android:id="@+id/die3_image_view"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                app:srcCompat="@drawable/dice_3"
-                android:contentDescription="@string/die_image" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
-            android:orientation="horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/die1_text_view"
-                style="@style/DieTextView"
-                tools:text="1" />
-
-            <TextView
-                android:id="@+id/die2_text_view"
-                style="@style/DieTextView"
-                tools:text="2" />
-
-            <TextView
-                android:id="@+id/die3_text_view"
-                style="@style/DieTextView"
-                tools:text="3" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/total_label"
+                android:id="@+id/roll_dice_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_label"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <TextView
-                android:id="@+id/total_value_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginTop="@dimen/double_margin"
+                android:text="@string/roll_the_dice"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/green_500"
-                tools:ignore="TextContrastCheck"
-                tools:text="6" />
+                android:textColor="@color/pink_500" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_margin"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/roll_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
-            android:text="@string/roll_the_dice"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+                <ImageView
+                    android:id="@+id/die1_image_view"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    tools:srcCompat="@drawable/dice_1"
+                    dieImage="@{game.dice[0]}"
+                    android:contentDescription="@string/die_image" />
 
-        <Button
-            android:id="@+id/reset_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
-            android:text="@string/reset_button_label" />
+                <ImageView
+                    android:id="@+id/die2_image_view"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    tools:srcCompat="@drawable/dice_2"
+                    dieImage="@{game.dice[1]}"
+                    android:contentDescription="@string/die_image" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/double_margin"
-            android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/die3_image_view"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    tools:srcCompat="@drawable/dice_3"
+                    dieImage="@{game.dice[2]}"
+                    android:contentDescription="@string/die_image" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/die1_text_view"
+                    style="@style/DieTextView"
+                    tools:text="1" />
+
+                <TextView
+                    android:id="@+id/die2_text_view"
+                    style="@style/DieTextView"
+                    tools:text="2" />
+
+                <TextView
+                    android:id="@+id/die3_text_view"
+                    style="@style/DieTextView"
+                    tools:text="3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_label"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <TextView
+                    android:id="@+id/total_value_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/green_500"
+                    tools:ignore="TextContrastCheck"
+                    tools:text="6" />
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/save_button"
-                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/roll_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
-                android:text="@string/save_button_label"
-                app:icon="@drawable/ic_baseline_save_alt_24" />
+                android:text="@string/roll_the_dice"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Button
-                android:id="@+id/history_button"
-                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/reset_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
-                android:text="@string/history_button_label"
-                app:icon="@drawable/ic_baseline_history_24" />
+                android:text="@string/reset_button_label" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_margin"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/save_button"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:text="@string/save_button_label"
+                    app:icon="@drawable/ic_baseline_save_alt_24" />
+
+                <Button
+                    android:id="@+id/history_button"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:text="@string/history_button_label"
+                    app:icon="@drawable/ic_baseline_history_24" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</layout>
