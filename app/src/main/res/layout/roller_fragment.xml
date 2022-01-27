@@ -71,16 +71,19 @@
                 <TextView
                     android:id="@+id/die1_text_view"
                     style="@style/DieTextView"
+                    dieValue="@{game.dice[0]}"
                     tools:text="1" />
 
                 <TextView
                     android:id="@+id/die2_text_view"
                     style="@style/DieTextView"
+                    dieValue="@{game.dice[1]}"
                     tools:text="2" />
 
                 <TextView
                     android:id="@+id/die3_text_view"
                     style="@style/DieTextView"
+                    dieValue="@{game.dice[2]}"
                     tools:text="3" />
 
             </LinearLayout>

@@ -7,6 +7,7 @@ import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.Die
 import ca.tetervak.diceroller3.domain.Game
 
+@BindingAdapter("dieValue")
 fun bindDieValue(textView: TextView, die: Die?) {
     if (die is Die) {
         textView.text = if (die.isRolled) {
