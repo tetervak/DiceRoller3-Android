@@ -2,10 +2,12 @@ package ca.tetervak.diceroller3.binding
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.Die
 import ca.tetervak.diceroller3.domain.Game
 
+@BindingAdapter("dieValue")
 fun bindDieValue(textView: TextView, die: Die?) {
     if (die is Die) {
         textView.text = if (die.isRolled) {
@@ -16,6 +18,7 @@ fun bindDieValue(textView: TextView, die: Die?) {
     }
 }
 
+@BindingAdapter("dieImage")
 fun bindDieImage(imageView: ImageView, die: Die?){
     if(die is Die){
         if(die.isRolled) {
@@ -33,6 +36,7 @@ fun bindDieImage(imageView: ImageView, die: Die?){
     }
 }
 
+@BindingAdapter("gameTotal")
 fun bindGameTotal(textView: TextView, game: Game?){
     if(game is Game){
         textView.text = String.format("%2d", game.total)
