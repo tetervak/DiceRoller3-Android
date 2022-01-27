@@ -51,7 +51,7 @@ class HistoryFragment : Fragment() {
     private fun refresh(history: HistoryData) {
         binding.history = history
         //bindHistoryCountValue(binding.historyCount, history.count)
-        bindHistoryListValues(binding.recyclerView, history.rolls)
+        //bindHistoryListValues(binding.recyclerView, history.rolls)
         //bindHistoryTotalValue(binding.historyTotal, history.total)
     }
 

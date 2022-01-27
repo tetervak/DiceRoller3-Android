@@ -23,6 +23,7 @@ fun bindHistoryTotalValue(textView: TextView, total: Int?) {
     }
 }
 
+@BindingAdapter("historyListValues")
 fun bindHistoryListValues(recyclerView: RecyclerView, list: List<RollData>?) {
     list?.let {
         val adapter = recyclerView.adapter as HistoryListAdapter
