@@ -66,7 +66,7 @@ class RollerFragment : Fragment() {
 //        bindDieImage(binding.die2ImageView, gameValue.dice[1])
 //        bindDieImage(binding.die3ImageView, gameValue.dice[2])
 
-        bindGameTotal(binding.totalValueTextView, gameValue)
+//        bindGameTotal(binding.totalValueTextView, gameValue)
     }
 
     private fun showHistory() {

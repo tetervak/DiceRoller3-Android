@@ -36,6 +36,7 @@ fun bindDieImage(imageView: ImageView, die: Die?){
     }
 }
 
+@BindingAdapter("gameTotal")
 fun bindGameTotal(textView: TextView, game: Game?){
     if(game is Game){
         textView.text = String.format("%2d", game.total)
