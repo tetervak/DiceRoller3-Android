@@ -12,7 +12,7 @@ class HistoryViewModel: ViewModel() {
 
     private val repository = GameDataRepository.getRepository()
 
-    val historyData: LiveData<HistoryData> = repository.observeHistoryData()
+    val history: LiveData<HistoryData> = repository.observeHistoryData()
 
     fun deleteRoll(id: Int){
         viewModelScope.launch(Dispatchers.IO) {

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ca.tetervak.diceroller3.domain.HistoryData"/>
+        <import type="ca.tetervak.diceroller3.ui.history.HistoryViewModel"/>
         <variable
-            name="history"
-            type="HistoryData" />
+            name="viewModel"
+            type="HistoryViewModel" />
     </data>
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            historyCountValue="@{history.count}"
+            historyCountValue="@{viewModel.history.count}"
             tools:text="History Count: 3 items" />
 
         <View
@@ -39,7 +39,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            historyListValues="@{history.rolls}"
+            historyListValues="@{viewModel.history.rolls}"
             tools:listitem="@layout/history_list_item" />
 
         <View
@@ -56,7 +56,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            historyTotalValue="@{history.total}"
+            historyTotalValue="@{viewModel.history.total}"
             tools:text="History Total: 10 points" />
 
     </LinearLayout>
