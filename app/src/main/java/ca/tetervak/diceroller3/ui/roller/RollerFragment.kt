@@ -33,9 +33,11 @@ class RollerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.game.observe(viewLifecycleOwner){ gameValue ->
-            refresh(gameValue)
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+//        viewModel.game.observe(viewLifecycleOwner){ gameValue ->
+//            refresh(gameValue)
+//        }
 
         binding.rollButton.setOnClickListener {
             viewModel.roll()
@@ -54,20 +56,20 @@ class RollerFragment : Fragment() {
         }
     }
 
-    private fun refresh(gameValue: Game) {
-
-        binding.game = gameValue
-
-//        bindDieValue(binding.die1TextView, gameValue.dice[0])
-//        bindDieValue(binding.die2TextView, gameValue.dice[1])
-//        bindDieValue(binding.die3TextView, gameValue.dice[2])
-
-//        bindDieImage(binding.die1ImageView, gameValue.dice[0])
-//        bindDieImage(binding.die2ImageView, gameValue.dice[1])
-//        bindDieImage(binding.die3ImageView, gameValue.dice[2])
-
-//        bindGameTotal(binding.totalValueTextView, gameValue)
-    }
+//    private fun refresh(gameValue: Game) {
+//
+//        binding.game = gameValue
+//
+////        bindDieValue(binding.die1TextView, gameValue.dice[0])
+////        bindDieValue(binding.die2TextView, gameValue.dice[1])
+////        bindDieValue(binding.die3TextView, gameValue.dice[2])
+//
+////        bindDieImage(binding.die1ImageView, gameValue.dice[0])
+////        bindDieImage(binding.die2ImageView, gameValue.dice[1])
+////        bindDieImage(binding.die3ImageView, gameValue.dice[2])
+//
+////        bindGameTotal(binding.totalValueTextView, gameValue)
+//    }
 
     private fun showHistory() {
         findNavController().navigate(R.id.action_roller_to_history)
