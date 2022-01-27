@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
-import ca.tetervak.diceroller3.binding.bindHistoryCountValue
-import ca.tetervak.diceroller3.binding.bindHistoryListValues
-import ca.tetervak.diceroller3.binding.bindHistoryTotalValue
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
+import ca.tetervak.diceroller3.domain.HistoryData
 import ca.tetervak.diceroller3.domain.RollData
 
 class HistoryFragment : Fragment() {
@@ -36,22 +34,25 @@ class HistoryFragment : Fragment() {
         }
         binding.recyclerView.adapter = adapter
 
-        refresh()
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+//        viewModel.history.observe(viewLifecycleOwner){ history ->
+//            refresh(history)
+//        }
 
         return binding.root
     }
 
     private fun delete(item: RollData) {
         viewModel.deleteRoll(item.id!!)
-        refresh()
     }
 
-    private fun refresh() {
-        val history = viewModel.getHistoryData()
-        bindHistoryCountValue(binding.historyCount, history.count)
-        bindHistoryListValues(binding.recyclerView, history.rolls)
-        bindHistoryTotalValue(binding.historyTotal, history.total)
-    }
+//    private fun refresh(history: HistoryData) {
+//        binding.history = history
+//        //bindHistoryCountValue(binding.historyCount, history.count)
+//        //bindHistoryListValues(binding.recyclerView, history.rolls)
+//        //bindHistoryTotalValue(binding.historyTotal, history.total)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -75,7 +76,6 @@ class HistoryFragment : Fragment() {
 
     private fun clear() {
         viewModel.clearAllRolls()
-        refresh()
     }
 
 }

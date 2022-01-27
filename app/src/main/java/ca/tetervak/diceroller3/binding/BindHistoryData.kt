@@ -1,11 +1,13 @@
 package ca.tetervak.diceroller3.binding
 
 import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.domain.RollData
 import ca.tetervak.diceroller3.ui.history.HistoryListAdapter
 
+@BindingAdapter("historyCountValue")
 fun bindHistoryCountValue(textView: TextView, count: Int?) {
     if(count is Int){
         textView.text =
@@ -13,6 +15,7 @@ fun bindHistoryCountValue(textView: TextView, count: Int?) {
     }
 }
 
+@BindingAdapter("historyTotalValue")
 fun bindHistoryTotalValue(textView: TextView, total: Int?) {
     if(total is Int){
         textView.text =
@@ -20,6 +23,7 @@ fun bindHistoryTotalValue(textView: TextView, total: Int?) {
     }
 }
 
+@BindingAdapter("historyListValues")
 fun bindHistoryListValues(recyclerView: RecyclerView, list: List<RollData>?) {
     list?.let {
         val adapter = recyclerView.adapter as HistoryListAdapter
@@ -27,6 +31,7 @@ fun bindHistoryListValues(recyclerView: RecyclerView, list: List<RollData>?) {
     }
 }
 
+@BindingAdapter("itemCountValue")
 fun bindItemCountValue(textView: TextView, count: Int?) {
     if (count is Int) {
         textView.text =
@@ -34,6 +39,7 @@ fun bindItemCountValue(textView: TextView, count: Int?) {
     }
 }
 
+@BindingAdapter("resultValues")
 fun bindResultValues(textView: TextView, item: RollData?) {
     item?.let {
         val values = item.values

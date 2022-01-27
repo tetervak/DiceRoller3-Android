@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
+import ca.tetervak.diceroller3.binding.bindDieImage
 import ca.tetervak.diceroller3.binding.bindDieValue
 import ca.tetervak.diceroller3.binding.bindGameTotal
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
+import ca.tetervak.diceroller3.domain.Game
 import com.google.android.material.snackbar.Snackbar
 
 class RollerFragment : Fragment() {
@@ -31,16 +33,18 @@ class RollerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        refresh() // display the data from the game
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+//        viewModel.game.observe(viewLifecycleOwner){ gameValue ->
+//            refresh(gameValue)
+//        }
 
         binding.rollButton.setOnClickListener {
             viewModel.roll()
-            refresh()
         }
 
         binding.resetButton.setOnClickListener {
             viewModel.reset()
-            refresh()
         }
 
         binding.saveButton.setOnClickListener {
@@ -52,12 +56,20 @@ class RollerFragment : Fragment() {
         }
     }
 
-    private fun refresh() {
-        bindDieValue(binding.die1TextView, viewModel.game.dice[0])
-        bindDieValue(binding.die2TextView, viewModel.game.dice[1])
-        bindDieValue(binding.die3TextView, viewModel.game.dice[2])
-        bindGameTotal(binding.totalValueTextView, viewModel.game)
-    }
+//    private fun refresh(gameValue: Game) {
+//
+//        binding.game = gameValue
+//
+////        bindDieValue(binding.die1TextView, gameValue.dice[0])
+////        bindDieValue(binding.die2TextView, gameValue.dice[1])
+////        bindDieValue(binding.die3TextView, gameValue.dice[2])
+//
+////        bindDieImage(binding.die1ImageView, gameValue.dice[0])
+////        bindDieImage(binding.die2ImageView, gameValue.dice[1])
+////        bindDieImage(binding.die3ImageView, gameValue.dice[2])
+//
+////        bindGameTotal(binding.totalValueTextView, gameValue)
+//    }
 
     private fun showHistory() {
         findNavController().navigate(R.id.action_roller_to_history)

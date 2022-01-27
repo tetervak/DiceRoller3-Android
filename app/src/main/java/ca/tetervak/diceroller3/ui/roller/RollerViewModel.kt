@@ -1,28 +1,40 @@
 package ca.tetervak.diceroller3.ui.roller
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.domain.Game
 import ca.tetervak.diceroller3.domain.asRollData
 import ca.tetervak.diceroller3.data.GameDataRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RollerViewModel : ViewModel() {
 
     private val repository = GameDataRepository.getRepository()
 
-    val game: Game = Game()
+    private val gameValue: Game = Game()
+    private val _game: MutableLiveData<Game> = MutableLiveData(gameValue)
+    val game: LiveData<Game> = _game
 
     fun roll() {
-        game.roll()
+        gameValue.roll()
+        _game.value = gameValue
     }
 
     fun reset() {
-        game.reset()
+        gameValue.reset()
+        _game.value = gameValue
     }
 
+    // this method has a bug
     fun save(): Boolean {
-        return if (game.isRolled) {
-            repository.saveRoll(game.asRollData())
-            true
+        return if (gameValue.isRolled) {
+            viewModelScope.launch(Dispatchers.IO) {
+                repository.saveRoll(gameValue.asRollData())
+            }
+            true // <- this is a bug
         } else {
             false
         }

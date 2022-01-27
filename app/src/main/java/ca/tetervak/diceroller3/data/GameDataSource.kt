@@ -5,7 +5,7 @@ import ca.tetervak.diceroller3.domain.RollData
 
 class GameDataSource {
 
-    private var autoId = 0;
+    private var autoId = 0
     private val itemsMap = HashMap<Int, RollData>()
 
     private val itemsList: List<RollData>

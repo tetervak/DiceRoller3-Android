@@ -9,7 +9,7 @@ data class HistoryData(
     val total: Int
 
     init {
-        var sum = 0;
+        var sum = 0
         for (item in rolls) {
             sum += item.total
         }
