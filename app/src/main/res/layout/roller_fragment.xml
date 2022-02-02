@@ -40,7 +40,8 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     tools:srcCompat="@drawable/dice_1"
-                    dieImage="@{viewModel.game.dice[0]}"
+                    dieImage="@{viewModel.rollData.values[0]}"
+                    isRolled="@{viewModel.isRolled}"
                     android:contentDescription="@string/die_image" />
 
                 <ImageView
@@ -48,7 +49,8 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     tools:srcCompat="@drawable/dice_2"
-                    dieImage="@{viewModel.game.dice[1]}"
+                    dieImage="@{viewModel.rollData.values[0]}"
+                    isRolled="@{viewModel.isRolled}"
                     android:contentDescription="@string/die_image" />
 
                 <ImageView
@@ -56,7 +58,8 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     tools:srcCompat="@drawable/dice_3"
-                    dieImage="@{viewModel.game.dice[2]}"
+                    dieImage="@{viewModel.rollData.values[0]}"
+                    isRolled="@{viewModel.isRolled}"
                     android:contentDescription="@string/die_image" />
 
             </LinearLayout>
@@ -71,19 +74,22 @@
                 <TextView
                     android:id="@+id/die1_text_view"
                     style="@style/DieTextView"
-                    dieValue="@{viewModel.game.dice[0]}"
+                    dieValue="@{viewModel.rollData.values[0]}"
+                    isRolled="@{viewModel.isRolled}"
                     tools:text="1" />
 
                 <TextView
                     android:id="@+id/die2_text_view"
                     style="@style/DieTextView"
-                    dieValue="@{viewModel.game.dice[1]}"
+                    dieValue="@{viewModel.rollData.values[1]}"
+                    isRolled="@{viewModel.isRolled}"
                     tools:text="2" />
 
                 <TextView
                     android:id="@+id/die3_text_view"
                     style="@style/DieTextView"
-                    dieValue="@{viewModel.game.dice[2]}"
+                    dieValue="@{viewModel.rollData.values[2]}"
+                    isRolled="@{viewModel.isRolled}"
                     tools:text="3" />
 
             </LinearLayout>
@@ -108,7 +114,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="@color/green_500"
                     tools:ignore="TextContrastCheck"
-                    gameTotal="@{viewModel.game}"
+                    gameTotal="@{viewModel.rollData.total}"
                     tools:text="6" />
 
             </LinearLayout>

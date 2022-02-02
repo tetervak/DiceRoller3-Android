@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.data.HistoryDataFlowRepository
 import ca.tetervak.diceroller3.model.Game
+import ca.tetervak.diceroller3.model.RollData
 import ca.tetervak.diceroller3.model.asRollData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,18 +15,25 @@ class RollerViewModel : ViewModel() {
 
     private val repository = HistoryDataFlowRepository.getRepository()
 
+    private val isRolledValue = false
+    private val _isRolled = MutableLiveData(isRolledValue)
+    val isRolled: LiveData<Boolean> = _isRolled
+
     private val gameValue: Game = Game()
-    private val _game: MutableLiveData<Game> = MutableLiveData(gameValue)
-    val game: LiveData<Game> = _game
+
+    private val _rollData: MutableLiveData<RollData> = MutableLiveData(gameValue.asRollData())
+    val rollData: LiveData<RollData> = _rollData
 
     fun roll() {
         gameValue.roll()
-        _game.value = gameValue
+        _rollData.value = gameValue.asRollData()
+        _isRolled.value = true
     }
 
     fun reset() {
         gameValue.reset()
-        _game.value = gameValue
+        _rollData.value = gameValue.asRollData()
+        _isRolled.value = false
     }
 
     // this method has a bug

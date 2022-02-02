@@ -4,25 +4,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import ca.tetervak.diceroller3.R
-import ca.tetervak.diceroller3.model.Die
-import ca.tetervak.diceroller3.model.Game
 
-@BindingAdapter("dieValue")
-fun bindDieValue(textView: TextView, die: Die?) {
-    if (die is Die) {
-        textView.text = if (die.isRolled) {
-            die.value.toString()
+@BindingAdapter(value = ["dieValue", "isRolled"])
+fun bindRollDieValue(textView: TextView, value: Int?, isRolled: Boolean?) {
+    if (value is Int && isRolled is Boolean) {
+        textView.text = if (isRolled) {
+            value.toString()
         } else {
             textView.resources.getString(R.string.blank)
         }
     }
 }
 
-@BindingAdapter("dieImage")
-fun bindDieImage(imageView: ImageView, die: Die?){
-    if(die is Die){
-        if(die.isRolled) {
-            when (die.value) {
+@BindingAdapter(value = ["dieImage","isRolled"])
+fun bindDieImage(imageView: ImageView, value: Int?, isRolled: Boolean?){
+    if(value is Int && isRolled is Boolean){
+        if(isRolled) {
+            when (value) {
                 1 -> imageView.setImageResource(R.drawable.dice_1)
                 2 -> imageView.setImageResource(R.drawable.dice_2)
                 3 -> imageView.setImageResource(R.drawable.dice_3)
@@ -37,8 +35,8 @@ fun bindDieImage(imageView: ImageView, die: Die?){
 }
 
 @BindingAdapter("gameTotal")
-fun bindGameTotal(textView: TextView, game: Game?){
-    if(game is Game){
-        textView.text = String.format("%2d", game.total)
+fun bindGameTotal(textView: TextView, total: Int?){
+    if(total is Int){
+        textView.text = String.format("%2d", total)
     }
 }
