@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.data.HistoryDataFlowRepository
-import ca.tetervak.diceroller3.data.HistoryDataRepository
 import ca.tetervak.diceroller3.model.HistoryData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

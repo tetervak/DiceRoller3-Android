@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.data.HistoryDataFlowRepository
 import ca.tetervak.diceroller3.model.Game
 import ca.tetervak.diceroller3.model.asRollData
-import ca.tetervak.diceroller3.data.HistoryDataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
