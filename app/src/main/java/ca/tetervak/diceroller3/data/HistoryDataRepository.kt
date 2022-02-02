@@ -6,7 +6,7 @@ import ca.tetervak.diceroller3.model.HistoryData
 import ca.tetervak.diceroller3.model.RollData
 import kotlinx.coroutines.delay
 
-class GameDataRepository private constructor() {
+class HistoryDataRepository private constructor() {
 
     private val dataSource = HistoryDataSource()
 
@@ -68,11 +68,11 @@ class GameDataRepository private constructor() {
     companion object {
 
         @Volatile
-        private var INSTANCE: GameDataRepository? = null
+        private var INSTANCE: HistoryDataRepository? = null
 
-        fun getRepository(): GameDataRepository {
+        fun getRepository(): HistoryDataRepository {
             return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: GameDataRepository().also {
+                INSTANCE ?: HistoryDataRepository().also {
                     INSTANCE = it
                 }
             }
