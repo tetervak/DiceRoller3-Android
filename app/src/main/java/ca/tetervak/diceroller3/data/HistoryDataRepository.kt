@@ -3,7 +3,7 @@ package ca.tetervak.diceroller3.data
 import ca.tetervak.diceroller3.model.RollData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class HistoryDataFlowRepository {
+class HistoryDataRepository private constructor() {
 
     private val dataFlowSource = HistoryDataFlowSource()
 
@@ -19,11 +19,11 @@ class HistoryDataFlowRepository {
     companion object {
 
         @Volatile
-        private var INSTANCE: HistoryDataFlowRepository? = null
+        private var INSTANCE: HistoryDataRepository? = null
 
-        fun getRepository(): HistoryDataFlowRepository {
+        fun getRepository(): HistoryDataRepository {
             return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: HistoryDataFlowRepository().also {
+                INSTANCE ?: HistoryDataRepository().also {
                     INSTANCE = it
                 }
             }

@@ -1,51 +1,62 @@
 package ca.tetervak.diceroller3.ui.roller
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import ca.tetervak.diceroller3.data.HistoryDataFlowRepository
+import androidx.lifecycle.*
+import androidx.lifecycle.Transformations.switchMap
+import ca.tetervak.diceroller3.data.HistoryDataRepository
+import ca.tetervak.diceroller3.data.RollDataRepository
 import ca.tetervak.diceroller3.model.Game
 import ca.tetervak.diceroller3.model.RollData
 import ca.tetervak.diceroller3.model.asRollData
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class RollerViewModel : ViewModel() {
 
-    private val repository = HistoryDataFlowRepository.getRepository()
+    private val historyDataRepository = HistoryDataRepository.getRepository()
+    private val rollDataRepository = RollDataRepository.getRepository()
 
     private val isRolledValue = false
     private val _isRolled = MutableLiveData(isRolledValue)
     val isRolled: LiveData<Boolean> = _isRolled
 
-    private val gameValue: Game = Game()
+    private val rollDataFromFlow =
+        rollDataRepository.getRollDataFlow().flowOn(Dispatchers.IO).asLiveData()
 
-    private val _rollData: MutableLiveData<RollData> = MutableLiveData(gameValue.asRollData())
-    val rollData: LiveData<RollData> = _rollData
+    private val rollDataInit = MutableLiveData(Game().asRollData())
+
+    val rollData: LiveData<RollData> = switchMap(isRolled){
+        if(it){
+            rollDataFromFlow
+        }else{
+            rollDataInit
+        }
+    }
 
     fun roll() {
-        gameValue.roll()
-        _rollData.value = gameValue.asRollData()
-        _isRolled.value = true
+        viewModelScope.launch(Dispatchers.IO){
+            rollDataRepository.rollDice()
+            _isRolled.postValue(true)
+        }
     }
 
     fun reset() {
-        gameValue.reset()
-        _rollData.value = gameValue.asRollData()
         _isRolled.value = false
     }
 
     // this method has a bug
     fun save(): Boolean {
-        return if (gameValue.isRolled) {
-            viewModelScope.launch(Dispatchers.IO) {
-                repository.saveRoll(gameValue.asRollData())
-            }
-            true // <- this is a bug
-        } else {
-            false
-        }
+//        return if (gameValue.isRolled) {
+//            viewModelScope.launch(Dispatchers.IO) {
+//                historyDataRepository.saveRoll(gameValue.asRollData())
+//            }
+//            true // <- this is a bug
+//        } else {
+//            false
+//        }
+        return true
     }
 
 }
