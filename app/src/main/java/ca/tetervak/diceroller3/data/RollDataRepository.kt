@@ -1,17 +1,17 @@
 package ca.tetervak.diceroller3.data
 
 import ca.tetervak.diceroller3.model.RollData
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.delay
 
 class RollDataRepository private constructor(){
 
-    private val dataFlowSource = RollDataFlowSource()
+    private val dataSource = RollDataSource()
 
-    suspend fun rollDice() = dataFlowSource.rollDice()
-
-    @ExperimentalCoroutinesApi
-    fun getRollDataFlow(): Flow<RollData> = dataFlowSource.getRollDataFlow()
+    suspend fun getRandomRollData(): RollData {
+        delay(100) // fake delay
+        dataSource.rollDice()
+        return dataSource.getRollData()
+    }
 
     companion object {
 
