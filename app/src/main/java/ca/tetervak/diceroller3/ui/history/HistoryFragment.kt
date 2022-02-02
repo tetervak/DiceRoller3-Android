@@ -7,8 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
-import ca.tetervak.diceroller3.domain.HistoryData
-import ca.tetervak.diceroller3.domain.RollData
+import ca.tetervak.diceroller3.model.RollData
 
 class HistoryFragment : Fragment() {
 

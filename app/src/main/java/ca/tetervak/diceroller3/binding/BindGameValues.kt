@@ -4,8 +4,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import ca.tetervak.diceroller3.R
-import ca.tetervak.diceroller3.domain.Die
-import ca.tetervak.diceroller3.domain.Game
+import ca.tetervak.diceroller3.model.Die
+import ca.tetervak.diceroller3.model.Game
 
 @BindingAdapter("dieValue")
 fun bindDieValue(textView: TextView, die: Die?) {

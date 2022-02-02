@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ca.tetervak.diceroller3.domain.Game
-import ca.tetervak.diceroller3.domain.asRollData
+import ca.tetervak.diceroller3.model.Game
+import ca.tetervak.diceroller3.model.asRollData
 import ca.tetervak.diceroller3.data.GameDataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

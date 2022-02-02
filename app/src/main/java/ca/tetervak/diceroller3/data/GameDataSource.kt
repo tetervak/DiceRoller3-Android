@@ -1,7 +1,7 @@
 package ca.tetervak.diceroller3.data
 
-import ca.tetervak.diceroller3.domain.HistoryData
-import ca.tetervak.diceroller3.domain.RollData
+import ca.tetervak.diceroller3.model.HistoryData
+import ca.tetervak.diceroller3.model.RollData
 
 class GameDataSource {
 

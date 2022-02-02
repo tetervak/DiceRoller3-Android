@@ -1,4 +1,4 @@
-package ca.tetervak.diceroller3.domain
+package ca.tetervak.diceroller3.model
 
 // Rolls 3 dice objects and calculates the total of the roll
 class Game {

@@ -6,11 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
-import ca.tetervak.diceroller3.binding.bindDieImage
-import ca.tetervak.diceroller3.binding.bindDieValue
-import ca.tetervak.diceroller3.binding.bindGameTotal
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
-import ca.tetervak.diceroller3.domain.Game
 import com.google.android.material.snackbar.Snackbar
 
 class RollerFragment : Fragment() {

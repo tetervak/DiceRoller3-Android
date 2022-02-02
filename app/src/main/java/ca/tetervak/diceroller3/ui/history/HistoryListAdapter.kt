@@ -5,11 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ca.tetervak.diceroller3.binding.bindDateTime
-import ca.tetervak.diceroller3.binding.bindItemCountValue
-import ca.tetervak.diceroller3.binding.bindResultValues
 import ca.tetervak.diceroller3.databinding.HistoryListItemBinding
-import ca.tetervak.diceroller3.domain.RollData
+import ca.tetervak.diceroller3.model.RollData
 
 class HistoryListAdapter(
     private var onDelete: (RollData) -> Unit

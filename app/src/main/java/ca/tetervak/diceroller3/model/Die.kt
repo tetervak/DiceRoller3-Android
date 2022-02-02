@@ -1,4 +1,4 @@
-package ca.tetervak.diceroller3.domain
+package ca.tetervak.diceroller3.model
 
 import android.util.Log
 import java.lang.IllegalArgumentException

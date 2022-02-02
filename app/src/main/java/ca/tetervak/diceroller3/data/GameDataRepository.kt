@@ -2,8 +2,8 @@ package ca.tetervak.diceroller3.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ca.tetervak.diceroller3.domain.HistoryData
-import ca.tetervak.diceroller3.domain.RollData
+import ca.tetervak.diceroller3.model.HistoryData
+import ca.tetervak.diceroller3.model.RollData
 import kotlinx.coroutines.delay
 
 class GameDataRepository private constructor() {
