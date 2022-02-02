@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
+import ca.tetervak.diceroller3.ui.util.EventObserver
 import com.google.android.material.snackbar.Snackbar
 
 class RollerFragment : Fragment() {
@@ -31,9 +32,6 @@ class RollerFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-//        viewModel.game.observe(viewLifecycleOwner){ gameValue ->
-//            refresh(gameValue)
-//        }
 
         binding.rollButton.setOnClickListener {
             viewModel.roll()
@@ -43,29 +41,14 @@ class RollerFragment : Fragment() {
             viewModel.reset()
         }
 
-        binding.saveButton.setOnClickListener {
-            save()
-        }
-
-        binding.historyButton.setOnClickListener {
-            showHistory()
-        }
+        viewModel.messageText.observe(viewLifecycleOwner, EventObserver{ message ->
+            Snackbar.make(
+                binding.root,
+                getString(message),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        })
     }
-
-//    private fun refresh(gameValue: Game) {
-//
-//        binding.game = gameValue
-//
-////        bindDieValue(binding.die1TextView, gameValue.dice[0])
-////        bindDieValue(binding.die2TextView, gameValue.dice[1])
-////        bindDieValue(binding.die3TextView, gameValue.dice[2])
-//
-////        bindDieImage(binding.die1ImageView, gameValue.dice[0])
-////        bindDieImage(binding.die2ImageView, gameValue.dice[1])
-////        bindDieImage(binding.die3ImageView, gameValue.dice[2])
-//
-////        bindGameTotal(binding.totalValueTextView, gameValue)
-//    }
 
     private fun showHistory() {
         findNavController().navigate(R.id.action_roller_to_history)
@@ -83,10 +66,6 @@ class RollerFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_save -> {
-                save()
-                true
-            }
             R.id.action_history -> {
                 showHistory()
                 true
@@ -95,19 +74,4 @@ class RollerFragment : Fragment() {
         }
     }
 
-    private fun save() {
-        if(viewModel.save()){
-            Snackbar.make(
-                binding.root,
-                getString(R.string.the_data_is_saved),
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }else{
-            Snackbar.make(
-                binding.root,
-                getString(R.string.nothing_to_save),
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
-    }
 }

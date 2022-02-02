@@ -31,6 +31,7 @@ class HistoryFragment : Fragment() {
         val adapter = HistoryListAdapter { item ->
             delete(item)
         }
+
         binding.recyclerView.adapter = adapter
 
         binding.viewModel = viewModel
