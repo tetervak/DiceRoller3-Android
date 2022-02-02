@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ca.tetervak.diceroller3.data.HistoryDataFlowRepository
 import ca.tetervak.diceroller3.model.Game
 import ca.tetervak.diceroller3.model.asRollData
 import ca.tetervak.diceroller3.data.HistoryDataRepository
@@ -12,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class RollerViewModel : ViewModel() {
 
-    private val repository = HistoryDataRepository.getRepository()
+    private val repository = HistoryDataFlowRepository.getRepository()
 
     private val gameValue: Game = Game()
     private val _game: MutableLiveData<Game> = MutableLiveData(gameValue)
