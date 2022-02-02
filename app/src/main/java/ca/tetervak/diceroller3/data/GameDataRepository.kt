@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 
 class GameDataRepository private constructor() {
 
-    private val dataSource = GameDataSource()
+    private val dataSource = HistoryDataSource()
 
     private var isObserved = false
 

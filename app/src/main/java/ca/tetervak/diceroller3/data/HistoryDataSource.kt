@@ -3,7 +3,7 @@ package ca.tetervak.diceroller3.data
 import ca.tetervak.diceroller3.model.HistoryData
 import ca.tetervak.diceroller3.model.RollData
 
-class GameDataSource {
+class HistoryDataSource {
 
     private var autoId = 0
     private val itemsMap = HashMap<Int, RollData>()
