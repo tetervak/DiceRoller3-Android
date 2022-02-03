@@ -20,7 +20,7 @@ class RollerViewModel : ViewModel() {
     private val _isRolled = MutableLiveData(false)
     val isRolled: LiveData<Boolean> = _isRolled
 
-    private val initialRollData = Game().asRollData()
+    private val initialRollData = RollData()
     private val _rollData = MutableLiveData(initialRollData)
     val rollData: LiveData<RollData> = _rollData
 
