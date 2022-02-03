@@ -4,9 +4,7 @@ import androidx.lifecycle.*
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.data.HistoryDataRepository
 import ca.tetervak.diceroller3.data.RollDataRepository
-import ca.tetervak.diceroller3.model.Game
 import ca.tetervak.diceroller3.model.RollData
-import ca.tetervak.diceroller3.model.asRollData
 import ca.tetervak.diceroller3.ui.util.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
