@@ -55,9 +55,11 @@ class HistoryDataFlowSource {
 
     private fun refresh(){
         Log.d(TAG, "refresh: called")
-        val history = getHistoryData()
-        subscriptions.values.forEach {
-                subscription -> subscription.onUpdate(history)
+        if(subscriptions.isNotEmpty()) {
+            val history = getHistoryData()
+            subscriptions.values.forEach { subscription ->
+                subscription.onUpdate(history)
+            }
         }
     }
 
