@@ -13,10 +13,9 @@ class RollDataSource {
         game.roll()
     }
 
+    @Synchronized
     fun getRollData(): RollData {
-        synchronized(game){
-            return game.asRollData()
-        }
+        return game.asRollData()
     }
 
 }
