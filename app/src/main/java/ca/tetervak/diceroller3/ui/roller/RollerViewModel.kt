@@ -13,10 +13,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RollerViewModel @Inject constructor() : ViewModel() {
-
-    private val historyDataRepository = HistoryDataRepository.getRepository()
-    private val rollDataRepository = RollDataRepository.getRepository()
+class RollerViewModel @Inject constructor(
+    private val historyDataRepository: HistoryDataRepository,
+    private val rollDataRepository: RollDataRepository
+) : ViewModel() {
 
     private val _isRolled = MutableLiveData(false)
     val isRolled: LiveData<Boolean> = _isRolled

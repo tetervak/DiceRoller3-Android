@@ -16,4 +16,10 @@ class RepositoryModule {
         return HistoryDataRepository.getRepository()
     }
 
+    @Provides
+    @Singleton
+    fun provideRollDataRepository(): RollDataRepository{
+        return RollDataRepository.getRepository()
+    }
+
 }
