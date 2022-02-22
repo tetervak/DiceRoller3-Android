@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor(): ViewModel() {
-
-    private val repository = HistoryDataRepository.getRepository()
+class HistoryViewModel @Inject constructor(
+    private val repository: HistoryDataRepository
+): ViewModel() {
 
     @ExperimentalCoroutinesApi
     val history: LiveData<HistoryData> =
