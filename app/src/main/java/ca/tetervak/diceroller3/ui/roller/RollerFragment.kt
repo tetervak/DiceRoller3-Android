@@ -9,7 +9,9 @@ import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.databinding.RollerFragmentBinding
 import ca.tetervak.diceroller3.ui.util.EventObserver
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RollerFragment : Fragment() {
 
     private var _binding: RollerFragmentBinding? = null

@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.diceroller3.R
 import ca.tetervak.diceroller3.databinding.HistoryFragmentBinding
 import ca.tetervak.diceroller3.model.RollData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HistoryFragment : Fragment() {
 
     private var _binding: HistoryFragmentBinding? = null
