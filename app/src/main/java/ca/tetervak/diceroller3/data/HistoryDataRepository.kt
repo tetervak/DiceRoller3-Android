@@ -1,33 +1,17 @@
 package ca.tetervak.diceroller3.data
 
+import ca.tetervak.diceroller3.model.HistoryData
 import ca.tetervak.diceroller3.model.RollData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 
-class HistoryDataRepository private constructor() {
+interface HistoryDataRepository {
+    suspend fun saveRoll(rollData: RollData)
 
-    private val dataFlowSource = HistoryDataFlowSource()
+    suspend fun deleteRoll(id: Int)
 
-    suspend fun saveRoll(rollData: RollData) = dataFlowSource.saveRoll(rollData)
-
-    suspend fun deleteRoll(id: Int) = dataFlowSource.deleteRoll(id)
-
-    suspend fun clearAllRolls() = dataFlowSource.clearAllRolls()
+    suspend fun clearAllRolls()
 
     @ExperimentalCoroutinesApi
-    fun getHistoryDataFlow() = dataFlowSource.getHistoryDataFlow()
-
-    companion object {
-
-        @Volatile
-        private var INSTANCE: HistoryDataRepository? = null
-
-        fun getRepository(): HistoryDataRepository {
-            return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: HistoryDataRepository().also {
-                    INSTANCE = it
-                }
-            }
-        }
-    }
-
+    fun getHistoryDataFlow(): Flow<HistoryData>
 }
