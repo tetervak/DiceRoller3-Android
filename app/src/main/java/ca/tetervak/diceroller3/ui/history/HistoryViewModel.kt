@@ -6,12 +6,15 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import ca.tetervak.diceroller3.data.HistoryDataRepository
 import ca.tetervak.diceroller3.model.HistoryData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HistoryViewModel: ViewModel() {
+@HiltViewModel
+class HistoryViewModel @Inject constructor(): ViewModel() {
 
     private val repository = HistoryDataRepository.getRepository()
 

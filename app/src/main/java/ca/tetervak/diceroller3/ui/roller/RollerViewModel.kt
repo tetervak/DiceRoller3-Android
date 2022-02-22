@@ -6,11 +6,14 @@ import ca.tetervak.diceroller3.data.HistoryDataRepository
 import ca.tetervak.diceroller3.data.RollDataRepository
 import ca.tetervak.diceroller3.model.RollData
 import ca.tetervak.diceroller3.ui.util.Event
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RollerViewModel : ViewModel() {
+@HiltViewModel
+class RollerViewModel @Inject constructor() : ViewModel() {
 
     private val historyDataRepository = HistoryDataRepository.getRepository()
     private val rollDataRepository = RollDataRepository.getRepository()
